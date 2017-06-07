@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class Stream<T>: MutableCollection, RangeReplaceableCollection {
+open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 
 	public enum Event<T> {
 		case value(T)
@@ -40,7 +40,7 @@ open class Stream<T>: MutableCollection, RangeReplaceableCollection {
 		return events.index(after: i)
 	}
 	
-	public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Iterator.Element == Stream.Iterator.Element  {
+	public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Iterator.Element == Flux.Iterator.Element  {
 		events.replaceSubrange(subrange, with: newElements)
 	}
 	
@@ -67,12 +67,12 @@ open class Stream<T>: MutableCollection, RangeReplaceableCollection {
 	/// Operators and subscription callbacks will be executed in the main queue.
 	///
 	/// Can be used as RX Just and From operators.
-	public required init<S>(_ elements: S) where S : Sequence, S.Iterator.Element == Stream.Iterator.Element {
+	public required init<S>(_ elements: S) where S : Sequence, S.Iterator.Element == Flux.Iterator.Element {
 		events = Array(elements)
 		queue = DispatchQueue.main
 	}
 	
-	public required init(_ stream: Stream, queue: DispatchQueue = DispatchQueue.main) {
+	public required init(_ stream: Flux, queue: DispatchQueue = DispatchQueue.main) {
 		self.events = stream.events
 		self.subscriptions = stream.subscriptions
 		self.queue = queue

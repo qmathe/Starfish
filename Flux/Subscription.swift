@@ -10,7 +10,7 @@ import Foundation
 
 public struct Subscription<T>: Hashable {
 
-	public typealias EventHandler = (Stream<T>.Event<T>) -> ()
+	public typealias EventHandler = (Flux<T>.Event<T>) -> ()
 	public typealias ValueHandler = (T) -> ()
 	public typealias ErrorHandler = (Error) -> ()
 	public typealias Completion = () -> ()

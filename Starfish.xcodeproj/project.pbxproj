@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		600E8C651D593F0A00AFD10E /* Starfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60484F961D003DEB003972DA /* Starfish.framework */; };
-		603537EC1EE221A500BDE53B /* StreamOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603537EB1EE221A500BDE53B /* StreamOperators.swift */; };
+		603537EC1EE221A500BDE53B /* FluxOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603537EB1EE221A500BDE53B /* FluxOperators.swift */; };
 		60873B481DD88175004FFE29 /* Starfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60873B3F1DD88175004FFE29 /* Starfish.framework */; };
 		60873B671DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60873B681DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60B8EE6F1EE0D07E0060B5F2 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */; };
+		60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */; };
 		60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE701EE0D0860060B5F2 /* Subscription.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		600E8C601D593F0A00AFD10E /* TestStarfish.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestStarfish.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		603537EB1EE221A500BDE53B /* StreamOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamOperators.swift; path = Stream/StreamOperators.swift; sourceTree = "<group>"; };
+		603537EB1EE221A500BDE53B /* FluxOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxOperators.swift; sourceTree = "<group>"; };
 		60484F961D003DEB003972DA /* Starfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60484FA71D003DEB003972DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60873B351DD87DD0004FFE29 /* Playground-macOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-macOS.playground"; path = "Playgrounds/Playground-macOS.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -46,9 +46,8 @@
 		60873B641DD8834A004FFE29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/iOS/Info.plist; sourceTree = "<group>"; };
 		60873B661DD88353004FFE29 /* Starfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfish.h; path = Support/Starfish.h; sourceTree = "<group>"; };
 		60B8EE631ED717B90060B5F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Stream/Stream.swift; sourceTree = "<group>"; };
-		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Stream/Subscription.swift; sourceTree = "<group>"; };
-		A5F7EECA1EE8313D00E2F457 /* Flux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Flux.swift; path = Stream/Flux.swift; sourceTree = "<group>"; };
+		60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flux.swift; sourceTree = "<group>"; };
+		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +96,7 @@
 			children = (
 				60B8EE631ED717B90060B5F2 /* README.md */,
 				60873B341DD87DB5004FFE29 /* Playground */,
-				60B8EE6D1EE0D0560060B5F2 /* Stream */,
+				60B8EE6D1EE0D0560060B5F2 /* Flux */,
 				60484FA41D003DEB003972DA /* Test */,
 				60873B5D1DD882AE004FFE29 /* Support */,
 				601292A21D00619700B8E9EA /* Frameworks */,
@@ -159,15 +158,14 @@
 			name = macOS;
 			sourceTree = "<group>";
 		};
-		60B8EE6D1EE0D0560060B5F2 /* Stream */ = {
+		60B8EE6D1EE0D0560060B5F2 /* Flux */ = {
 			isa = PBXGroup;
 			children = (
-				60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */,
-				603537EB1EE221A500BDE53B /* StreamOperators.swift */,
-				A5F7EECA1EE8313D00E2F457 /* Flux.swift */,
+				60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */,
+				603537EB1EE221A500BDE53B /* FluxOperators.swift */,
 				60B8EE701EE0D0860060B5F2 /* Subscription.swift */,
 			);
-			name = Stream;
+			path = Flux;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,9 +354,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60B8EE6F1EE0D07E0060B5F2 /* Stream.swift in Sources */,
+				60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */,
 				60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */,
-				603537EC1EE221A500BDE53B /* StreamOperators.swift in Sources */,
+				603537EC1EE221A500BDE53B /* FluxOperators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

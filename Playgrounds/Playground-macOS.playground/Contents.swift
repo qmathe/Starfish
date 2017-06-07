@@ -3,4 +3,4 @@
 import Cocoa
 import Starfish
 
-var str = "Hello, playground"
+let stream = Flux<Int>()
