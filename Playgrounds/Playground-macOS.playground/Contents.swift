@@ -3,6 +3,12 @@
 import Cocoa
 import Starfish
 
+func section(_ title: String, closure: () -> ()) {
+	print("\n\(title)\n")
+	closure()
+}
+
+
 let flux = Flux<Int>()
 let wave = Wave<Int>()
 
@@ -17,3 +23,7 @@ wave.subscribe { event in
 }
 
 wave.append(Wave<Int>.Event.value(flux))
+
+section("Map Example") {
+	Flux<Int>([1, 2, 3]).map { $0 * $0 }.subscribe { print($0) }
+}
