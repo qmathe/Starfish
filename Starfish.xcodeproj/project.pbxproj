@@ -14,6 +14,7 @@
 		60873B681DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */; };
 		60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE701EE0D0860060B5F2 /* Subscription.swift */; };
+		A532412F1EE844170047C849 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532412E1EE844170047C849 /* Wave.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		60B8EE631ED717B90060B5F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flux.swift; sourceTree = "<group>"; };
 		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		A532412E1EE844170047C849 /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */,
 				603537EB1EE221A500BDE53B /* FluxOperators.swift */,
 				60B8EE701EE0D0860060B5F2 /* Subscription.swift */,
+				A532412E1EE844170047C849 /* Wave.swift */,
 			);
 			path = Flux;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A532412F1EE844170047C849 /* Wave.swift in Sources */,
 				60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */,
 				60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */,
 				603537EC1EE221A500BDE53B /* FluxOperators.swift in Sources */,
