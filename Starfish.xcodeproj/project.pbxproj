@@ -14,6 +14,8 @@
 		60873B681DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */; };
 		60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE701EE0D0860060B5F2 /* Subscription.swift */; };
+		60FF90F21EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF90F11EE8B83E002CACB0 /* TestFluxCreation.swift */; };
+		60FF90F31EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF90F11EE8B83E002CACB0 /* TestFluxCreation.swift */; };
 		A532412F1EE844170047C849 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = A532412E1EE844170047C849 /* Wave.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,7 @@
 		60B8EE631ED717B90060B5F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flux.swift; sourceTree = "<group>"; };
 		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
+		60FF90F11EE8B83E002CACB0 /* TestFluxCreation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFluxCreation.swift; sourceTree = "<group>"; };
 		A532412E1EE844170047C849 /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				60484FA71D003DEB003972DA /* Info.plist */,
+				60FF90F11EE8B83E002CACB0 /* TestFluxCreation.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -350,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60FF90F21EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60FF90F31EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,13 +404,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -412,13 +420,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

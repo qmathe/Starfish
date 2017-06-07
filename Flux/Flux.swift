@@ -62,13 +62,18 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		self.queue = queue
 	}
 	
-	/// Initalizes a new stream from another sequence.
+	/// Initalizes a new stream from another event sequence.
 	///
 	/// Operators and subscription callbacks will be executed in the main queue.
 	///
 	/// Can be used as RX Just and From operators.
 	public required init<S>(_ elements: S) where S : Sequence, S.Iterator.Element == Flux.Iterator.Element {
 		events = Array(elements)
+		queue = DispatchQueue.main
+	}
+	
+	public required init<S>(_ elements: S) where S : Sequence, S.Iterator.Element == T {
+		events = elements.map { Event<T>.value($0) }
 		queue = DispatchQueue.main
 	}
 	
@@ -87,12 +92,14 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	open func subscribe(_ subscriber: AnyObject? = nil, valueHandler: @escaping Subscription<T>.ValueHandler, errorHandler: @escaping Subscription<T>.ErrorHandler = { _ in }, completion: @escaping Subscription<T>.Completion = {}) -> Subscription<T> {
 		let subscription = Subscription(subscriber: subscriber, valueHandler: valueHandler, errorHandler: errorHandler, completion: completion)
 		subscriptions.insert(subscription)
+		send()
 		return subscription
 	}
 
 	open func subscribe(_ subscriber: AnyObject? = nil, eventHandler: @escaping Subscription<T>.EventHandler) -> Subscription<T> {
 		let subscription = Subscription(subscriber: subscriber, eventHandler: eventHandler)
 		subscriptions.insert(subscription)
+		send()
 		return subscription
 	}
 
