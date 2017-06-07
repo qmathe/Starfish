@@ -1,0 +1,692 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		600E8C651D593F0A00AFD10E /* Starfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60484F961D003DEB003972DA /* Starfish.framework */; };
+		603537EC1EE221A500BDE53B /* StreamOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603537EB1EE221A500BDE53B /* StreamOperators.swift */; };
+		60873B481DD88175004FFE29 /* Starfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60873B3F1DD88175004FFE29 /* Starfish.framework */; };
+		60873B671DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60873B681DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60B8EE6F1EE0D07E0060B5F2 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */; };
+		60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE701EE0D0860060B5F2 /* Subscription.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		600E8C661D593F0A00AFD10E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60484F8D1D003DEB003972DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60484F951D003DEB003972DA;
+			remoteInfo = Confetti;
+		};
+		60873B491DD88175004FFE29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60484F8D1D003DEB003972DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60873B3E1DD88174004FFE29;
+			remoteInfo = "Confetti (iOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		600E8C601D593F0A00AFD10E /* TestStarfish.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestStarfish.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		603537EB1EE221A500BDE53B /* StreamOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamOperators.swift; path = Stream/StreamOperators.swift; sourceTree = "<group>"; };
+		60484F961D003DEB003972DA /* Starfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60484FA71D003DEB003972DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60873B351DD87DD0004FFE29 /* Playground-macOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-macOS.playground"; path = "Playgrounds/Playground-macOS.playground"; sourceTree = "<group>"; };
+		60873B361DD87DD0004FFE29 /* Playground-private.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-private.playground"; path = "Playgrounds/Playground-private.playground"; sourceTree = "<group>"; };
+		60873B3F1DD88175004FFE29 /* Starfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60873B471DD88175004FFE29 /* TestStarfish.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestStarfish.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60873B611DD882F0004FFE29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/iOS/Info.plist; sourceTree = "<group>"; };
+		60873B641DD8834A004FFE29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/iOS/Info.plist; sourceTree = "<group>"; };
+		60873B661DD88353004FFE29 /* Starfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfish.h; path = Support/Starfish.h; sourceTree = "<group>"; };
+		60B8EE631ED717B90060B5F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Stream/Stream.swift; sourceTree = "<group>"; };
+		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Stream/Subscription.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		600E8C5D1D593F0A00AFD10E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				600E8C651D593F0A00AFD10E /* Starfish.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60484F921D003DEB003972DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B3B1DD88174004FFE29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B441DD88175004FFE29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60873B481DD88175004FFE29 /* Starfish.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		601292A21D00619700B8E9EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60484F8C1D003DEB003972DA = {
+			isa = PBXGroup;
+			children = (
+				60B8EE631ED717B90060B5F2 /* README.md */,
+				60873B341DD87DB5004FFE29 /* Playground */,
+				60B8EE6D1EE0D0560060B5F2 /* Stream */,
+				60484FA41D003DEB003972DA /* Test */,
+				60873B5D1DD882AE004FFE29 /* Support */,
+				601292A21D00619700B8E9EA /* Frameworks */,
+				60484F971D003DEB003972DA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		60484F971D003DEB003972DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60484F961D003DEB003972DA /* Starfish.framework */,
+				600E8C601D593F0A00AFD10E /* TestStarfish.xctest */,
+				60873B3F1DD88175004FFE29 /* Starfish.framework */,
+				60873B471DD88175004FFE29 /* TestStarfish.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60484FA41D003DEB003972DA /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				60484FA71D003DEB003972DA /* Info.plist */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		60873B341DD87DB5004FFE29 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				60873B351DD87DD0004FFE29 /* Playground-macOS.playground */,
+				60873B361DD87DD0004FFE29 /* Playground-private.playground */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
+		60873B5D1DD882AE004FFE29 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				60873B661DD88353004FFE29 /* Starfish.h */,
+				60873B5F1DD882BD004FFE29 /* macOS */,
+				60873B5E1DD882B7004FFE29 /* iOS */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		60873B5E1DD882B7004FFE29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				60873B611DD882F0004FFE29 /* Info.plist */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		60873B5F1DD882BD004FFE29 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				60873B641DD8834A004FFE29 /* Info.plist */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
+		60B8EE6D1EE0D0560060B5F2 /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */,
+				603537EB1EE221A500BDE53B /* StreamOperators.swift */,
+				60B8EE701EE0D0860060B5F2 /* Subscription.swift */,
+			);
+			name = Stream;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		60484F931D003DEB003972DA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60873B671DD88353004FFE29 /* Starfish.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B3C1DD88174004FFE29 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60873B681DD88353004FFE29 /* Starfish.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		600E8C5F1D593F0A00AFD10E /* TestStarfish */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 600E8C681D593F0A00AFD10E /* Build configuration list for PBXNativeTarget "TestStarfish" */;
+			buildPhases = (
+				600E8C5C1D593F0A00AFD10E /* Sources */,
+				600E8C5D1D593F0A00AFD10E /* Frameworks */,
+				600E8C5E1D593F0A00AFD10E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				600E8C671D593F0A00AFD10E /* PBXTargetDependency */,
+			);
+			name = TestStarfish;
+			productName = TestConfetti;
+			productReference = 600E8C601D593F0A00AFD10E /* TestStarfish.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		60484F951D003DEB003972DA /* Starfish */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60484FAA1D003DEB003972DA /* Build configuration list for PBXNativeTarget "Starfish" */;
+			buildPhases = (
+				60484F911D003DEB003972DA /* Sources */,
+				60484F921D003DEB003972DA /* Frameworks */,
+				60484F931D003DEB003972DA /* Headers */,
+				60484F941D003DEB003972DA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Starfish;
+			productName = Confetti;
+			productReference = 60484F961D003DEB003972DA /* Starfish.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60873B3E1DD88174004FFE29 /* Starfish (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60873B501DD88175004FFE29 /* Build configuration list for PBXNativeTarget "Starfish (iOS)" */;
+			buildPhases = (
+				60873B3A1DD88174004FFE29 /* Sources */,
+				60873B3B1DD88174004FFE29 /* Frameworks */,
+				60873B3C1DD88174004FFE29 /* Headers */,
+				60873B3D1DD88174004FFE29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Starfish (iOS)";
+			productName = "Confetti (iOS)";
+			productReference = 60873B3F1DD88175004FFE29 /* Starfish.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60873B461DD88175004FFE29 /* TestStarfish (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60873B531DD88175004FFE29 /* Build configuration list for PBXNativeTarget "TestStarfish (iOS)" */;
+			buildPhases = (
+				60873B431DD88175004FFE29 /* Sources */,
+				60873B441DD88175004FFE29 /* Frameworks */,
+				60873B451DD88175004FFE29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60873B4A1DD88175004FFE29 /* PBXTargetDependency */,
+			);
+			name = "TestStarfish (iOS)";
+			productName = "Confetti (iOS)Tests";
+			productReference = 60873B471DD88175004FFE29 /* TestStarfish.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		60484F8D1D003DEB003972DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Quentin Mathé";
+				TargetAttributes = {
+					600E8C5F1D593F0A00AFD10E = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
+					};
+					60484F951D003DEB003972DA = {
+						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
+					};
+					60873B3E1DD88174004FFE29 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					60873B461DD88175004FFE29 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 60484F901D003DEB003972DA /* Build configuration list for PBXProject "Starfish" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 60484F8C1D003DEB003972DA;
+			productRefGroup = 60484F971D003DEB003972DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60484F951D003DEB003972DA /* Starfish */,
+				600E8C5F1D593F0A00AFD10E /* TestStarfish */,
+				60873B3E1DD88174004FFE29 /* Starfish (iOS) */,
+				60873B461DD88175004FFE29 /* TestStarfish (iOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		600E8C5E1D593F0A00AFD10E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60484F941D003DEB003972DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B3D1DD88174004FFE29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B451DD88175004FFE29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		600E8C5C1D593F0A00AFD10E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60484F911D003DEB003972DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60B8EE6F1EE0D07E0060B5F2 /* Stream.swift in Sources */,
+				60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */,
+				603537EC1EE221A500BDE53B /* StreamOperators.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B3A1DD88174004FFE29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60873B431DD88175004FFE29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		600E8C671D593F0A00AFD10E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60484F951D003DEB003972DA /* Starfish */;
+			targetProxy = 600E8C661D593F0A00AFD10E /* PBXContainerItemProxy */;
+		};
+		60873B4A1DD88175004FFE29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60873B3E1DD88174004FFE29 /* Starfish (iOS) */;
+			targetProxy = 60873B491DD88175004FFE29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		600E8C691D593F0A00AFD10E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Test/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		600E8C6A1D593F0A00AFD10E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Test/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		60484FA81D003DEB003972DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		60484FA91D003DEB003972DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		60484FAB1D003DEB003972DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Support/macOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.Starfish;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		60484FAC1D003DEB003972DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Support/macOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.Starfish;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		60873B511DD88175004FFE29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Support/iOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.Starfish;
+				PRODUCT_NAME = Starfish;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		60873B521DD88175004FFE29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Support/iOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.Starfish;
+				PRODUCT_NAME = Starfish;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		60873B541DD88175004FFE29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
+				PRODUCT_NAME = TestStarfish;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		60873B551DD88175004FFE29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
+				PRODUCT_NAME = TestStarfish;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600E8C681D593F0A00AFD10E /* Build configuration list for PBXNativeTarget "TestStarfish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				600E8C691D593F0A00AFD10E /* Debug */,
+				600E8C6A1D593F0A00AFD10E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60484F901D003DEB003972DA /* Build configuration list for PBXProject "Starfish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60484FA81D003DEB003972DA /* Debug */,
+				60484FA91D003DEB003972DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60484FAA1D003DEB003972DA /* Build configuration list for PBXNativeTarget "Starfish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60484FAB1D003DEB003972DA /* Debug */,
+				60484FAC1D003DEB003972DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60873B501DD88175004FFE29 /* Build configuration list for PBXNativeTarget "Starfish (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60873B511DD88175004FFE29 /* Debug */,
+				60873B521DD88175004FFE29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60873B531DD88175004FFE29 /* Build configuration list for PBXNativeTarget "TestStarfish (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60873B541DD88175004FFE29 /* Debug */,
+				60873B551DD88175004FFE29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 60484F8D1D003DEB003972DA /* Project object */;
+}
