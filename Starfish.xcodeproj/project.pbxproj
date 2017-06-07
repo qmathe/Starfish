@@ -38,8 +38,8 @@
 		603537EB1EE221A500BDE53B /* StreamOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamOperators.swift; path = Stream/StreamOperators.swift; sourceTree = "<group>"; };
 		60484F961D003DEB003972DA /* Starfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60484FA71D003DEB003972DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60873B351DD87DD0004FFE29 /* Playground-macOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-macOS.playground"; path = "Playgrounds/Playground-macOS.playground"; sourceTree = "<group>"; };
-		60873B361DD87DD0004FFE29 /* Playground-private.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-private.playground"; path = "Playgrounds/Playground-private.playground"; sourceTree = "<group>"; };
+		60873B351DD87DD0004FFE29 /* Playground-macOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-macOS.playground"; path = "Playgrounds/Playground-macOS.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		60873B361DD87DD0004FFE29 /* Playground-private.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-private.playground"; path = "Playgrounds/Playground-private.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		60873B3F1DD88175004FFE29 /* Starfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60873B471DD88175004FFE29 /* TestStarfish.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestStarfish.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60873B611DD882F0004FFE29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/iOS/Info.plist; sourceTree = "<group>"; };
@@ -48,6 +48,7 @@
 		60B8EE631ED717B90060B5F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Stream/Stream.swift; sourceTree = "<group>"; };
 		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subscription.swift; path = Stream/Subscription.swift; sourceTree = "<group>"; };
+		A5F7EECA1EE8313D00E2F457 /* Flux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Flux.swift; path = Stream/Flux.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +164,7 @@
 			children = (
 				60B8EE6E1EE0D07E0060B5F2 /* Stream.swift */,
 				603537EB1EE221A500BDE53B /* StreamOperators.swift */,
+				A5F7EECA1EE8313D00E2F457 /* Flux.swift */,
 				60B8EE701EE0D0860060B5F2 /* Subscription.swift */,
 			);
 			name = Stream;
@@ -274,11 +276,11 @@
 				TargetAttributes = {
 					600E8C5F1D593F0A00AFD10E = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					60484F951D003DEB003972DA = {
 						CreatedOnToolsVersion = 7.2.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					60873B3E1DD88174004FFE29 = {
 						CreatedOnToolsVersion = 8.0;
@@ -399,6 +401,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -411,6 +415,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.TestStarfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -527,6 +533,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -547,6 +555,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.quentinmathe.Starfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
