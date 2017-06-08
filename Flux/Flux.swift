@@ -131,7 +131,7 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	// MARK: - Sending Events
 	
 	open func send() {
-		if paused {
+		if paused || subscriptions.isEmpty {
 			return
 		}
 		for event in events {
