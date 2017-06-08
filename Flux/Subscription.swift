@@ -23,18 +23,21 @@ public struct Subscription<T>: Hashable {
 	}
 
 	public let id = UUID()
+	public unowned let flux: Flux<T>
 	public let subscriber: AnyObject?
 	public let action: Action
 	public var hashValue: Int {
 		return id.hashValue
 	}
 	
-	init(subscriber: AnyObject?, valueHandler: @escaping ValueHandler, errorHandler: @escaping ErrorHandler, completion: @escaping Completion) {
+	init(flux: Flux<T>, subscriber: AnyObject?, valueHandler: @escaping ValueHandler, errorHandler: @escaping ErrorHandler, completion: @escaping Completion) {
+		self.flux = flux
 		self.subscriber = subscriber
 		self.action = Action.value(valueHandler, errorHandler, completion)
 	}
 
-	init(subscriber: AnyObject?, eventHandler: @escaping EventHandler) {
+	init(flux: Flux<T>, subscriber: AnyObject?, eventHandler: @escaping EventHandler) {
+		self.flux = flux
 		self.subscriber = subscriber
 		self.action = Action.event(eventHandler)
 	}

@@ -90,14 +90,14 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	// MARK: - Subcribing to Events
 	
 	open func subscribe(_ subscriber: AnyObject? = nil, valueHandler: @escaping Subscription<T>.ValueHandler, errorHandler: @escaping Subscription<T>.ErrorHandler = { _ in }, completion: @escaping Subscription<T>.Completion = {}) -> Subscription<T> {
-		let subscription = Subscription(subscriber: subscriber, valueHandler: valueHandler, errorHandler: errorHandler, completion: completion)
+		let subscription = Subscription(flux: self, subscriber: subscriber, valueHandler: valueHandler, errorHandler: errorHandler, completion: completion)
 		subscriptions.insert(subscription)
 		send()
 		return subscription
 	}
 
 	open func subscribe(_ subscriber: AnyObject? = nil, eventHandler: @escaping Subscription<T>.EventHandler) -> Subscription<T> {
-		let subscription = Subscription(subscriber: subscriber, eventHandler: eventHandler)
+		let subscription = Subscription(flux: self, subscriber: subscriber, eventHandler: eventHandler)
 		subscriptions.insert(subscription)
 		send()
 		return subscription

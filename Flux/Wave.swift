@@ -9,14 +9,16 @@
 import Foundation
 
 open class Wave<T>: Flux<Flux<T>> {
+
+	private var subscribedFluxes = [Flux<T>]()
     
     open func switchLatest() -> Flux<T> {
         let stream = Flux<T>()
-        
-        for event in events {
+		
+		_ = subscribe() { event in
             switch event {
             case .value(let value):
-                changeActiveFlux(value)
+                self.redirectFlux(value, to: stream)
             case .error(let error):
                 stream.append(Flux<T>.Event.error(error))
             case .completed:
@@ -26,16 +28,17 @@ open class Wave<T>: Flux<Flux<T>> {
         return stream
     }
     
-    private func changeActiveFlux(_ flux: Flux<T>) {
-        unsubscribeFromAll()
+    private func redirectFlux(_ inputFlux: Flux<T>, to outputFlux: Flux<T>) {
+		unsubscribeFromAll()
+        subscribedFluxes = [inputFlux]
         
-        flux.subscribe() { event in
-            // TODO: Implement switch
-            //flux.append(Flux<T>.Event.value(value))
+        _ = inputFlux.subscribe() { event in
+			outputFlux.append(event)
         }
     }
-    
+	
+	    
     private func unsubscribeFromAll() {
-        
+        subscribedFluxes.forEach { $0.unsubscribe(self) }
     }
 }
