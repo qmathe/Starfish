@@ -43,3 +43,13 @@ func == (lhs: Event<Int>, rhs: Event<Int>) -> Bool {
 		return false
 	}
 }
+
+extension Event {
+
+	var value: T? {
+		guard case .value(let value) = self else {
+			return nil
+		}
+		return value
+	}
+}

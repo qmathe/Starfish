@@ -31,4 +31,15 @@ class TestFluxCreation: XCTestCase {
 		
 		XCTAssertTrue(equalEvents(sentEvents, receivedEvents))
 	}
+	
+	func testFrom() {
+		let sentValues = [0, 2, 4]
+		let flux = Flux<Int>(sentValues)
+		var receivedEvents = [Event<Int>]()
+		
+		_ = flux.subscribe { event in receivedEvents += [event] }
+		wait()
+		
+		XCTAssertTrue(equalEvents(sentValues.map { Event<Int>.value($0) }, receivedEvents))
+	}
 }
