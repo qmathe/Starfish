@@ -72,12 +72,11 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		queue = DispatchQueue.main
 	}
 	
-	public required init<S>(_ elements: S) where S : Sequence, S.Iterator.Element == T {
-		events = elements.map { Event<T>.value($0) }
-		queue = DispatchQueue.main
+	public convenience init<S>(_ elements: S) where S : Sequence, S.Iterator.Element == T {
+		self.init(elements.map { Event<T>.value($0) })
 	}
 	
-	public required init(_ stream: Flux, queue: DispatchQueue = DispatchQueue.main) {
+	public required init(_ stream: Flux<T>, queue: DispatchQueue = DispatchQueue.main) {
 		self.events = stream.events
 		self.subscriptions = stream.subscriptions
 		self.queue = queue

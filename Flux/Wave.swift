@@ -11,14 +11,16 @@ import Foundation
 open class Wave<T>: Flux<Flux<T>> {
 
 	private var subscribedFluxes = [Flux<T>]()
-    
-    open func switchLatest() -> Flux<T> {
+
+	// MARK: - Combining Fluxes
+	
+	open func merge() -> Flux<T> {
         let stream = Flux<T>()
 		
 		_ = subscribe() { event in
             switch event {
             case .value(let value):
-                self.redirectFlux(value, to: stream)
+                self.subscribe(to: value, redirectingEventsTo: stream)
             case .error(let error):
                 stream.append(Flux<T>.Event.error(error))
             case .completed:
@@ -28,17 +30,34 @@ open class Wave<T>: Flux<Flux<T>> {
         return stream
     }
     
-    private func redirectFlux(_ inputFlux: Flux<T>, to outputFlux: Flux<T>) {
-		unsubscribeFromAll()
-        subscribedFluxes = [inputFlux]
-        
-        _ = inputFlux.subscribe() { event in
-			outputFlux.append(event)
+    open func switchLatest() -> Flux<T> {
+        let stream = Flux<T>()
+		
+		_ = subscribe() { event in
+            switch event {
+            case .value(let value):
+				self.unsubscribeFromAll()
+				self.subscribe(to: value, redirectingEventsTo: stream)
+            case .error(let error):
+                stream.append(Flux<T>.Event.error(error))
+            case .completed:
+                stream.append(Flux<T>.Event.completed)
+            }
         }
+        return stream
     }
 	
+	// MARK: - Redirecting Fluxes
 	    
     private func unsubscribeFromAll() {
         subscribedFluxes.forEach { $0.unsubscribe(self) }
+		subscribedFluxes.removeAll()
     }
+	
+	private func subscribe(to inputFlux: Flux<T>, redirectingEventsTo outputFlux: Flux<T>) {
+		subscribedFluxes += [inputFlux]
+        _ = inputFlux.subscribe(self) { event in
+			outputFlux.append(event)
+        }
+	}
 }

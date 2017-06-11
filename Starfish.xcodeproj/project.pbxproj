@@ -13,6 +13,8 @@
 		603B63971EEA0B9100221ECA /* TestCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B63951EEA0B9100221ECA /* TestCommon.swift */; };
 		603B63991EEAEFB600221ECA /* TestFluxTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B63981EEAEFB600221ECA /* TestFluxTransform.swift */; };
 		603B639A1EEAEFB600221ECA /* TestFluxTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B63981EEAEFB600221ECA /* TestFluxTransform.swift */; };
+		603B639C1EECB41800221ECA /* TestFluxCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B639B1EECB41800221ECA /* TestFluxCombine.swift */; };
+		603B639D1EECB41800221ECA /* TestFluxCombine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603B639B1EECB41800221ECA /* TestFluxCombine.swift */; };
 		60873B481DD88175004FFE29 /* Starfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60873B3F1DD88175004FFE29 /* Starfish.framework */; };
 		60873B671DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60873B681DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +47,7 @@
 		603537EB1EE221A500BDE53B /* FluxOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FluxOperators.swift; sourceTree = "<group>"; };
 		603B63951EEA0B9100221ECA /* TestCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCommon.swift; sourceTree = "<group>"; };
 		603B63981EEAEFB600221ECA /* TestFluxTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFluxTransform.swift; sourceTree = "<group>"; };
+		603B639B1EECB41800221ECA /* TestFluxCombine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFluxCombine.swift; sourceTree = "<group>"; };
 		60484F961D003DEB003972DA /* Starfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60484FA71D003DEB003972DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60873B351DD87DD0004FFE29 /* Playground-macOS.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Playground-macOS.playground"; path = "Playgrounds/Playground-macOS.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -133,6 +136,7 @@
 				603B63951EEA0B9100221ECA /* TestCommon.swift */,
 				60FF90F11EE8B83E002CACB0 /* TestFluxCreation.swift */,
 				603B63981EEAEFB600221ECA /* TestFluxTransform.swift */,
+				603B639B1EECB41800221ECA /* TestFluxCombine.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -365,6 +369,7 @@
 				603B63961EEA0B9100221ECA /* TestCommon.swift in Sources */,
 				60FF90F21EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */,
 				603B63991EEAEFB600221ECA /* TestFluxTransform.swift in Sources */,
+				603B639C1EECB41800221ECA /* TestFluxCombine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +398,7 @@
 				603B63971EEA0B9100221ECA /* TestCommon.swift in Sources */,
 				60FF90F31EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */,
 				603B639A1EEAEFB600221ECA /* TestFluxTransform.swift in Sources */,
+				603B639D1EECB41800221ECA /* TestFluxCombine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
