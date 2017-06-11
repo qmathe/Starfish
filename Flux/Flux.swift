@@ -127,6 +127,10 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		send()
 	}
 	
+	open func appendValue(_ value: T) {
+		append(Event<T>.value(value))
+	}
+	
 	// MARK: - Sending Events
 	
 	open func send() {

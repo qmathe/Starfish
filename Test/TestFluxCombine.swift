@@ -29,12 +29,12 @@ class TestFluxCombine: XCTestCase {
 		let wave = Wave<Int>()
 		var receivedEvents = [Event<Int>]()
 
-		wave.append(Event<Flux<Int>>.value(flux1))
+		wave.appendValue(flux1)
 
 		_ = wave.merge().subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		wave.append(Event<Flux<Int>>.value(flux2))
+		wave.appendValue(flux2)
 		
 		XCTAssertTrue(equalEvents([0, 2, 1, 3].map { Event<Int>.value($0) }, receivedEvents))
 	}
@@ -45,12 +45,12 @@ class TestFluxCombine: XCTestCase {
 		let wave = Wave<Int>([Event<Flux<Int>>.value(flux1), Event<Flux<Int>>.value(flux2)])
 		var receivedEvents = [Event<Int>]()
 
-		flux1.append(Event<Int>.value(4))
+		flux1.appendValue(4)
 
 		_ = wave.merge().subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		flux2.append(Event<Int>.value(5))
+		flux2.appendValue(5)
 		
 		XCTAssertTrue(equalEvents([4, 5].map { Event<Int>.value($0) }, receivedEvents))
 	}
@@ -61,17 +61,15 @@ class TestFluxCombine: XCTestCase {
 		let wave = Wave<Int>()
 		var receivedEvents = [Event<Int>]()
 		
-		wave.append(Event<Flux<Int>>.value(flux1))
+		wave.appendValue(flux1)
 		
 		_ = wave.switchLatest().subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		wave.append(Event<Flux<Int>>.value(flux2))
+		wave.appendValue(flux2)
 		
-		flux1.append(Event<Int>.value(4))
-		flux2.append(Event<Int>.value(5))
-		
-		print(receivedEvents)
+		flux1.appendValue(4)
+		flux2.appendValue(5)
 
 		XCTAssertTrue(equalEvents([0, 2, 1, 3, 5].map { Event<Int>.value($0) }, receivedEvents))
 	}
