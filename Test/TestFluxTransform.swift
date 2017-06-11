@@ -18,6 +18,6 @@ class TestFluxTransform: XCTestCase {
 		_ = flux.map { $0 * 2 }.subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		XCTAssertTrue(equalEvents([0, 4, 8].map { Event<Int>.value($0) }, receivedEvents))
+		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 4, 8]), receivedEvents))
 	}
 }

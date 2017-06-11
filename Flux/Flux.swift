@@ -20,6 +20,10 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	open private(set) var subscriptions = Set<Subscription<T>>()
 	open private(set) var paused = false
 	public let queue: DispatchQueue
+	
+	class func events(_ values: [T]) -> [Event<T>] {
+		return values.map { Event<T>.value($0) }
+	}
 
 	// MARK: - Collection Protocol
 

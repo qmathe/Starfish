@@ -14,13 +14,13 @@ class TestFluxCombine: XCTestCase {
 	func testWaveMergeOnCreate() {
 		let flux1 = Flux<Int>([0, 2])
 		let flux2 = Flux<Int>([1, 3])
-		let wave = Wave<Int>([Event<Flux<Int>>.value(flux1), Event<Flux<Int>>.value(flux2)])
+		let wave = Wave<Int>(Wave<Int>.events([flux1, flux2]))
 		var receivedEvents = [Event<Int>]()
 		
 		_ = wave.merge().subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		XCTAssertTrue(equalEvents([0, 2, 1, 3].map { Event<Int>.value($0) }, receivedEvents))
+		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 2, 1, 3]), receivedEvents))
 	}
 	
 	func testWaveMergeOnAppend() {
@@ -36,13 +36,13 @@ class TestFluxCombine: XCTestCase {
 		
 		wave.appendValue(flux2)
 		
-		XCTAssertTrue(equalEvents([0, 2, 1, 3].map { Event<Int>.value($0) }, receivedEvents))
+		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 2, 1, 3]), receivedEvents))
 	}
 	
 	func testWaveMergeOnAppendToFlux() {
 		let flux1 = Flux<Int>()
 		let flux2 = Flux<Int>()
-		let wave = Wave<Int>([Event<Flux<Int>>.value(flux1), Event<Flux<Int>>.value(flux2)])
+		let wave = Wave<Int>(Wave<Int>.events([flux1, flux2]))
 		var receivedEvents = [Event<Int>]()
 
 		flux1.appendValue(4)
@@ -52,7 +52,7 @@ class TestFluxCombine: XCTestCase {
 		
 		flux2.appendValue(5)
 		
-		XCTAssertTrue(equalEvents([4, 5].map { Event<Int>.value($0) }, receivedEvents))
+		XCTAssertTrue(equalEvents(Flux<Int>.events([4, 5]), receivedEvents))
 	}
 
 	func testSwitchLatest() {
@@ -71,6 +71,6 @@ class TestFluxCombine: XCTestCase {
 		flux1.appendValue(4)
 		flux2.appendValue(5)
 
-		XCTAssertTrue(equalEvents([0, 2, 1, 3, 5].map { Event<Int>.value($0) }, receivedEvents))
+		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 2, 1, 3, 5]), receivedEvents))
 	}
 }

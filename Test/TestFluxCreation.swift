@@ -40,6 +40,6 @@ class TestFluxCreation: XCTestCase {
 		_ = flux.subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		XCTAssertTrue(equalEvents(sentValues.map { Event<Int>.value($0) }, receivedEvents))
+		XCTAssertTrue(equalEvents(Flux<Int>.events(sentValues), receivedEvents))
 	}
 }
