@@ -18,8 +18,22 @@ extension XCTestCase {
 
 typealias Event<T> = Flux<T>.Event<T>
 
+func XCTAssertEqual(_ expression1: @autoclosure () throws -> [Event<Int>], _ expression2: @autoclosure () throws -> [Event<Int>], _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
+	guard let lhs = try? expression1(), let rhs = try? expression2() else {
+		XCTFail()
+		return
+	}
+
+	if equalEvents(lhs, rhs) {
+		XCTAssertTrue(true)
+	} else {
+		print("Expected \(lhs), got \(rhs)")
+		XCTFail()
+	}
+}
+
 // TODO: With Swift 4, we could support extension Event: Equatable where T: Equatable { }
-func equalEvents(_ lhs: [Event<Int>], _ rhs: [Event<Int>]) -> Bool {
+private func equalEvents(_ lhs: [Event<Int>], _ rhs: [Event<Int>]) -> Bool {
 	guard lhs.count == rhs.count else {
 		return false
 	}

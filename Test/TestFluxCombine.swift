@@ -20,7 +20,7 @@ class TestFluxCombine: XCTestCase {
 		_ = wave.merge().subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 2, 1, 3]), receivedEvents))
+		XCTAssertEqual(Flux<Int>.events([0, 2, 1, 3]), receivedEvents)
 	}
 	
 	func testWaveMergeOnAppend() {
@@ -36,7 +36,7 @@ class TestFluxCombine: XCTestCase {
 		
 		wave.appendValue(flux2)
 		
-		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 2, 1, 3]), receivedEvents))
+		XCTAssertEqual(Flux<Int>.events([0, 2, 1, 3]), receivedEvents)
 	}
 	
 	func testWaveMergeOnAppendToFlux() {
@@ -52,7 +52,7 @@ class TestFluxCombine: XCTestCase {
 		
 		flux2.appendValue(5)
 		
-		XCTAssertTrue(equalEvents(Flux<Int>.events([4, 5]), receivedEvents))
+		XCTAssertEqual(Flux<Int>.events([4, 5]), receivedEvents)
 	}
 
 	func testSwitchLatest() {
@@ -71,6 +71,6 @@ class TestFluxCombine: XCTestCase {
 		flux1.appendValue(4)
 		flux2.appendValue(5)
 
-		XCTAssertTrue(equalEvents(Flux<Int>.events([0, 2, 1, 3, 5]), receivedEvents))
+		XCTAssertEqual(Flux<Int>.events([0, 2, 1, 3, 5]), receivedEvents)
 	}
 }

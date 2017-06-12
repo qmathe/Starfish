@@ -29,7 +29,7 @@ class TestFluxCreation: XCTestCase {
 		_ = flux.subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		XCTAssertTrue(equalEvents(sentEvents, receivedEvents))
+		XCTAssertEqual(sentEvents, receivedEvents)
 	}
 	
 	func testFrom() {
@@ -40,6 +40,6 @@ class TestFluxCreation: XCTestCase {
 		_ = flux.subscribe { event in receivedEvents += [event] }
 		wait()
 		
-		XCTAssertTrue(equalEvents(Flux<Int>.events(sentValues), receivedEvents))
+		XCTAssertEqual(Flux<Int>.events(sentValues), receivedEvents)
 	}
 }
