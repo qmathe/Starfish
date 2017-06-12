@@ -63,6 +63,19 @@ extension Flux {
 		return stream
 	}
 	
+	open func start(with initialValues: [T]) -> Flux<T> {
+		let stream = Flux()
+		let initialEvents = initialValues.map { Event<T>.value($0) }
+
+		events.insert(contentsOf: initialEvents, at: 0)
+		send()
+		
+		_ = subscribe(stream) { event in
+			stream.append(event)
+		}
+		return stream
+	}
+	
 	open func delay(_ seconds: TimeInterval) -> Flux<T> {
 		let stream = Flux()
 

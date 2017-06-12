@@ -16,7 +16,7 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		case completed
 	}
 
-	open private(set) var events = [Event<T>]()
+	open internal(set) var events = [Event<T>]()
 	open private(set) var subscriptions = Set<Subscription<T>>()
 	open private(set) var paused = false
 	public let queue: DispatchQueue
