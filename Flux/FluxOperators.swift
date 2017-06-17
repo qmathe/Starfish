@@ -11,14 +11,13 @@ import Dispatch
 
 extension Flux {
 
-	open func map<V>(_ transform: @escaping (T) throws -> V) rethrows -> Flux<V> {
-		let stream = Flux<V>()
-		
-		_ = subscribe(stream) { event in
+	func forward<V>(on stream: Flux<V>, with transform: @escaping (T) throws -> V) -> Flux<V> {
+		return propagate(on: stream) { event, stream in
 			switch event {
 			case .value(let value):
-				if let mappedValue = try? transform(value) {
-					stream.append(Flux<V>.Event<V>.value(mappedValue))
+				// TODO: Catch transform error and wrap it into an event to forward
+				if let newValue = try? transform(value) {
+					stream.append(Flux<V>.Event<V>.value(newValue))
 				}
 			case .error(let error):
 				stream.append(Flux<V>.Event<V>.error(error))
@@ -26,31 +25,25 @@ extension Flux {
 				stream.append(Flux<V>.Event<V>.completed)
 			}
 		}
+	}
+	
+	func propagate<V>(on stream: Flux<V>, with reaction: @escaping (Event<T>, Flux<V>) -> ()) -> Flux<V> {
+		_ = subscribe(stream) { event in
+			reaction(event, stream)
+		}
 		return stream
 	}
 
+	open func map<V>(_ transform: @escaping (T) throws -> V) rethrows -> Flux<V> {
+		return forward(on: Flux<V>(), with: transform)
+	}
+
     open func flatMap<V>(_ transform: @escaping (T) throws -> Flux<V>) rethrows -> Flux<Flux<V>> {
-        let stream = Flux<Flux<V>>()
-        
-        _ = subscribe(stream) { event in
-            switch event {
-            case .value(let value):
-                if let mappedValue = try? transform(value) {
-                    stream.append(Flux<Flux<V>>.Event<Flux<V>>.value(mappedValue))
-                }
-            case .error(let error):
-                stream.append(Flux<Flux<V>>.Event<Flux<V>>.error(error))
-            case .completed:
-                stream.append(Flux<Flux<V>>.Event<Flux<V>>.completed)
-            }
-        }
-        return stream
+        return forward(on: Flux<Flux<V>>(), with: transform)
     }
 	
 	open func filter(_ isIncluded: @escaping (T) throws -> Bool) rethrows -> Flux<T> {
-		let stream = Flux()
-		
-		_ = subscribe(stream) { event in
+		return propagate(on: Flux()) { event, stream in
 			switch event {
 			case .value(let value):
 				if (try? isIncluded(value)) ?? false {
@@ -60,26 +53,17 @@ extension Flux {
 				stream.append(event)
 			}
 		}
-		return stream
 	}
 	
 	open func start(with initialValues: [T]) -> Flux<T> {
-		let stream = Flux()
 		let initialEvents = initialValues.map { Event<T>.value($0) }
-
 		events.insert(contentsOf: initialEvents, at: 0)
 		send()
-		
-		_ = subscribe(stream) { event in
-			stream.append(event)
-		}
-		return stream
+		return forward(on: Flux()) { $0 }
 	}
 	
 	open func delay(_ seconds: TimeInterval) -> Flux<T> {
-		let stream = Flux()
-
-		_ = subscribe(stream) { event in
+		return propagate(on: Flux()) { event, stream in
 			switch event {
 			case .error(_):
 				stream.append(event)
@@ -89,16 +73,10 @@ extension Flux {
 				}
 			}
 		}
-		return stream
 	}
 
 	// NOTE: An alternative name could be switch(to queue).
 	open func run(in queue: DispatchQueue) -> Flux<T> {
-		let stream = Flux(queue: queue)
-		
-		_ = subscribe(stream) { event in
-			stream.append(event)
-		}
-		return stream
+		return forward(on: Flux(queue: queue)) { $0 }
 	}
 }
