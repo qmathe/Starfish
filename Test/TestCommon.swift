@@ -18,13 +18,22 @@ extension XCTestCase {
 
 typealias Event<T> = Flux<T>.Event<T>
 
-func XCTAssertEqual(_ expression1: @autoclosure () throws -> [Event<Int>], _ expression2: @autoclosure () throws -> [Event<Int>], _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
+func XCTAssertEqual<T: Equatable>(_ expression1: @autoclosure () throws -> [Event<T>], _ expression2: @autoclosure () throws -> [Event<T>], _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
+	XCTAssertEqual(expression1, expression2, { $0 == $1 }, message, file: file, line: line)
+}
+
+// Arrays and tuples (tuples nested in arrarys in our test case) doesn't conform to Equatable and cannot be 
+// extended to do so in Swift 3:
+//
+// - we implement equalEvents() to compare event arrays
+// - we pass a closure to decide whether two event values are equal or not rather instead of using ==
+func XCTAssertEqual<T>(_ expression1: @autoclosure () throws -> [Event<T>], _ expression2: @autoclosure () throws -> [Event<T>], _ equal: (T, T) -> Bool, _ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
 	guard let lhs = try? expression1(), let rhs = try? expression2() else {
 		XCTFail()
 		return
 	}
 
-	if equalEvents(lhs, rhs) {
+	if equalEvents(lhs, rhs, equal) {
 		XCTAssertTrue(true)
 	} else {
 		print("Expected \(lhs), got \(rhs)")
@@ -33,25 +42,39 @@ func XCTAssertEqual(_ expression1: @autoclosure () throws -> [Event<Int>], _ exp
 }
 
 // TODO: With Swift 4, we could support extension Event: Equatable where T: Equatable { }
-private func equalEvents(_ lhs: [Event<Int>], _ rhs: [Event<Int>]) -> Bool {
+private func equalEvents <T>(_ lhs: [Event<T>], _ rhs: [Event<T>], _ equal: (T, T) -> Bool) -> Bool {
 	guard lhs.count == rhs.count else {
 		return false
 	}
-	for (index, element) in lhs.enumerated() {
-		if !(element == rhs[index]) {
+	for (index, lhsElement) in lhs.enumerated() {
+		let rhsElement = rhs[index]
+		if !equalEvent(lhsElement, rhsElement, equal) {
 			return false
 		}
 	}
 	return true
 }
 
-func == (lhs: Event<Int>, rhs: Event<Int>) -> Bool {
+func equalEvent<T>(_ lhs: Event<T>, _ rhs: Event<T>, _ equal: (T, T) -> Bool) -> Bool {
 	switch (lhs, rhs) {
-	case (Event<Int>.value(let value1), Event<Int>.value(let value2)):
-		return value1 == value2
-	case (Event<Int>.error(_), Event<Int>.error(_)):
+	case (Event<T>.value(let value1), Event<T>.value(let value2)):
+		return equal(value1, value2)
+	case (Event<T>.error(_), Event<T>.error(_)):
 		return true
-	case (Event<Int>.completed, Event<Int>.completed):
+	case (Event<T>.completed, Event<T>.completed):
+		return true
+	default:
+		return false
+	}
+}
+
+func == <T: Equatable>(lhs: Event<T>, rhs: Event<T>) -> Bool {
+	switch (lhs, rhs) {
+	case (Event<T>.value(let value1), Event<T>.value(let value2)):
+		return value1 == value2
+	case (Event<T>.error(_), Event<T>.error(_)):
+		return true
+	case (Event<T>.completed, Event<T>.completed):
 		return true
 	default:
 		return false
