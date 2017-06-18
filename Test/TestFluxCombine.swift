@@ -58,15 +58,14 @@ class TestFluxCombine: XCTestCase {
 	func testCombineLatest() {
 		let flux1 = Flux<Int>([0, 2])
 		let flux2 = Flux<Int>([1, 3])
-		let wave = Wave<Int>(Wave<Int>.events([flux1, flux2]))
-		var receivedEvents = [Event<Int>]()
+		var receivedEvents = [Event<(Int, Int)>]()
 		
-		_ = wave.combineLatest().subscribe { event in receivedEvents += [event] }
+		_ = flux1.combineLatest(with: flux2).subscribe { event in receivedEvents += [event] }
 		wait()
 
 		flux2.appendValue(5)
 
-		XCTAssertEqual(Flux<[Int]>.events([[0, 1], [2, 3], [2, 5]]), receivedEvents)
+		XCTAssertEqual(Flux<(Int, Int)>.events([(0, 1), (2, 3), (2, 5)]), receivedEvents, { $0.0 == $1.0 && $0.1 == $1.1 })
 	}
 
 	func testSwitchLatest() {

@@ -17,11 +17,12 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	}
 
 	open internal(set) var events = [Event<T>]()
+	var sentValue: T?
 	open private(set) var subscriptions = Set<Subscription<T>>()
 	open private(set) var paused = false
 	public let queue: DispatchQueue
 	
-	class func events(_ values: [T]) -> [Event<T>] {
+	public class func events(_ values: [T]) -> [Event<T>] {
 		return values.map { Event<T>.value($0) }
 	}
 
@@ -92,17 +93,17 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	
 	// MARK: - Subcribing to Events
 	
-	open func subscribe(_ subscriber: AnyObject? = nil, valueHandler: @escaping Subscription<T>.ValueHandler, errorHandler: @escaping Subscription<T>.ErrorHandler = { _ in }, completion: @escaping Subscription<T>.Completion = {}) -> Subscription<T> {
+	open func subscribe(_ subscriber: AnyObject? = nil, sendCount: Int = Int.max, valueHandler: @escaping Subscription<T>.ValueHandler, errorHandler: @escaping Subscription<T>.ErrorHandler = { _ in }, completion: @escaping Subscription<T>.Completion = {}) -> Subscription<T> {
 		let subscription = Subscription(flux: self, subscriber: subscriber, valueHandler: valueHandler, errorHandler: errorHandler, completion: completion)
 		subscriptions.insert(subscription)
-		send()
+		send(sendCount)
 		return subscription
 	}
 
-	open func subscribe(_ subscriber: AnyObject? = nil, eventHandler: @escaping Subscription<T>.EventHandler) -> Subscription<T> {
+	open func subscribe(_ subscriber: AnyObject? = nil, sendCount: Int = Int.max, eventHandler: @escaping Subscription<T>.EventHandler) -> Subscription<T> {
 		let subscription = Subscription(flux: self, subscriber: subscriber, eventHandler: eventHandler)
 		subscriptions.insert(subscription)
-		send()
+		send(sendCount)
 		return subscription
 	}
 
@@ -137,13 +138,16 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	
 	// MARK: - Sending Events
 	
-	open func send() {
+	open func send(_ count: Int = Int.max) {
 		if paused || subscriptions.isEmpty {
 			return
 		}
-		for event in events {
+		for event in events.prefix(count) {
 			for subscription in subscriptions {
 				dispatch(event, with: subscription)
+			}
+			if case .value(let value) = event {
+				sentValue = value
 			}
 		}
 		events.removeAll()

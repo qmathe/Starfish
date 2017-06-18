@@ -55,12 +55,56 @@ extension Flux {
 		}
 	}
 	
+	// MARK: - Combining Fluxes
+	
 	open func start(with initialValues: [T]) -> Flux<T> {
 		let initialEvents = initialValues.map { Event<T>.value($0) }
 		events.insert(contentsOf: initialEvents, at: 0)
 		send()
 		return forward(on: Flux()) { $0 }
 	}
+
+	open func combineLatest<V>(with otherFlux: Flux<V>) -> Flux<(T, V)> {
+		return combineLatest(with: otherFlux) { value, otherValue in
+			return (value, otherValue)
+		}
+	}
+
+	open func combineLatest<V, W>(with otherFlux: Flux<V>, reduce: @escaping (T, V) -> W) -> Flux<W> {
+        let stream = Flux<W>()
+		
+		// Cache one value and wait the other flux
+		_ = subscribe(sendCount: 1) { event in
+            switch event {
+            case .value(let value):
+				if let otherValue = otherFlux.sentValue {
+					stream.append(Flux<W>.Event<W>.value(reduce(value, otherValue)))
+				}
+            case .error(let error):
+                stream.append(Flux<W>.Event<W>.error(error))
+            case .completed:
+                stream.append(Flux<W>.Event<W>.completed)
+            }
+        }
+		// Send other flux values combined to the cached value
+		_ = otherFlux.subscribe() { event in
+			switch event {
+            case .value(let value):
+				if let otherValue = self.sentValue {
+					stream.append(Flux<W>.Event<W>.value(reduce(otherValue, value)))
+				}
+            case .error(let error):
+                stream.append(Flux<W>.Event<W>.error(error))
+            case .completed:
+                stream.append(Flux<W>.Event<W>.completed)
+            }
+		}
+
+		// Send pending values combined to the other flux last value
+		send()
+
+        return stream
+    }
 	
 	open func delay(_ seconds: TimeInterval) -> Flux<T> {
 		return propagate(on: Flux()) { event, stream in
