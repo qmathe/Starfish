@@ -72,9 +72,8 @@ extension Flux {
 
 	open func combineLatest<V, W>(with otherFlux: Flux<V>, reduce: @escaping (T, V) -> W) -> Flux<W> {
         let stream = Flux<W>()
-		
-		// Cache one value and wait the other flux
-		_ = subscribe(sendCount: 1) { event in
+
+		_ = subscribe(sendNow: false) { event in
             switch event {
             case .value(let value):
 				if let otherValue = otherFlux.sentValue {
@@ -86,8 +85,7 @@ extension Flux {
                 stream.append(Flux<W>.Event<W>.completed)
             }
         }
-		// Send other flux values combined to the cached value
-		_ = otherFlux.subscribe() { event in
+		_ = otherFlux.subscribe(sendNow: false) { event in
 			switch event {
             case .value(let value):
 				if let otherValue = self.sentValue {
@@ -100,8 +98,11 @@ extension Flux {
             }
 		}
 
-		// Send pending values combined to the other flux last value
-		send()
+		// Emit each event one at a time and combine it with the last emitted value
+		for _ in 0..<Swift.max(events.count, otherFlux.events.count) {
+			send(1)
+			otherFlux.send(1)
+		}
 
         return stream
     }

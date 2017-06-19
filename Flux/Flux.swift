@@ -93,17 +93,17 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	
 	// MARK: - Subcribing to Events
 	
-	open func subscribe(_ subscriber: AnyObject? = nil, sendCount: Int = Int.max, valueHandler: @escaping Subscription<T>.ValueHandler, errorHandler: @escaping Subscription<T>.ErrorHandler = { _ in }, completion: @escaping Subscription<T>.Completion = {}) -> Subscription<T> {
+	open func subscribe(_ subscriber: AnyObject? = nil, sendNow: Bool = true, valueHandler: @escaping Subscription<T>.ValueHandler, errorHandler: @escaping Subscription<T>.ErrorHandler = { _ in }, completion: @escaping Subscription<T>.Completion = {}) -> Subscription<T> {
 		let subscription = Subscription(flux: self, subscriber: subscriber, valueHandler: valueHandler, errorHandler: errorHandler, completion: completion)
 		subscriptions.insert(subscription)
-		send(sendCount)
+		send(sendNow ? Int.max : 0)
 		return subscription
 	}
 
-	open func subscribe(_ subscriber: AnyObject? = nil, sendCount: Int = Int.max, eventHandler: @escaping Subscription<T>.EventHandler) -> Subscription<T> {
+	open func subscribe(_ subscriber: AnyObject? = nil, sendNow: Bool = true, eventHandler: @escaping Subscription<T>.EventHandler) -> Subscription<T> {
 		let subscription = Subscription(flux: self, subscriber: subscriber, eventHandler: eventHandler)
 		subscriptions.insert(subscription)
-		send(sendCount)
+		send(sendNow ? Int.max : 0)
 		return subscription
 	}
 
@@ -150,7 +150,7 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 				sentValue = value
 			}
 		}
-		events.removeAll()
+		events.removeFirst(count == Int.max ? events.count : count)
 	}
 	
 	private func dispatch(_ event: Event<T>, with subscription: Subscription<T>) {
