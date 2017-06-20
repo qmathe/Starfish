@@ -17,7 +17,7 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	}
 
 	open internal(set) var events = [Event<T>]()
-	var sentValue: T?
+	var buffer = (Any?, Any?)(nil, nil)
 	open private(set) var subscriptions = Set<Subscription<T>>()
 	open private(set) var paused = false
 	public let queue: DispatchQueue
@@ -145,9 +145,6 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		for event in events.prefix(count) {
 			for subscription in subscriptions {
 				dispatch(event, with: subscription)
-			}
-			if case .value(let value) = event {
-				sentValue = value
 			}
 		}
 		events.removeFirst(count == Int.max ? events.count : count)

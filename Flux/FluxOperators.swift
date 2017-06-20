@@ -76,9 +76,10 @@ extension Flux {
 		_ = subscribe(sendNow: false) { event in
             switch event {
             case .value(let value):
-				if let otherValue = otherFlux.sentValue {
+				if let otherValue = self.buffer.1 as? V {
 					stream.append(Flux<W>.Event<W>.value(reduce(value, otherValue)))
 				}
+				self.buffer.0 = value
             case .error(let error):
                 stream.append(Flux<W>.Event<W>.error(error))
             case .completed:
@@ -88,9 +89,10 @@ extension Flux {
 		_ = otherFlux.subscribe(sendNow: false) { event in
 			switch event {
             case .value(let value):
-				if let otherValue = self.sentValue {
+				if let otherValue = self.buffer.0 as? T {
 					stream.append(Flux<W>.Event<W>.value(reduce(otherValue, value)))
 				}
+				self.buffer.1 = value
             case .error(let error):
                 stream.append(Flux<W>.Event<W>.error(error))
             case .completed:
