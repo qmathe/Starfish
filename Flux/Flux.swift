@@ -15,9 +15,17 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		case error(Error)
 		case completed
 	}
+	
+	public enum State {
+		case active
+		case paused
+		case failed(Error)
+		case completed
+	}
 
 	open internal(set) var events = [Event<T>]()
 	var buffer = (Any?, Any?)(nil, nil)
+	public internal(set) var state = State.active
 	open private(set) var subscriptions = Set<Subscription<T>>()
 	open private(set) var paused = false
 	public let queue: DispatchQueue
@@ -139,12 +147,22 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	// MARK: - Sending Events
 	
 	open func send(_ count: Int = Int.max) {
-		if paused || subscriptions.isEmpty {
+		guard case .active = state, !subscriptions.isEmpty else {
 			return
 		}
 		for event in events.prefix(count) {
 			for subscription in subscriptions {
 				dispatch(event, with: subscription)
+			}
+			switch event {
+			case .error(let error):
+				state = .failed(error)
+				break
+			case .completed:
+				state = .completed
+				break
+			default:
+				()
 			}
 		}
 		events.removeFirst(count == Int.max ? events.count : count)
@@ -171,11 +189,17 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	// MARK: - Controlling Sent Events
 	
 	open func pause() {
-		paused = true
+		guard case .active = state else {
+			return
+		}
+		state = .paused
 	}
 	
 	open func resume() {
-		paused = false
+		guard case .paused = state else {
+			return
+		}
+		state = .active
 		send()
 	}
 }

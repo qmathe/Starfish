@@ -9,6 +9,10 @@
 import XCTest
 @testable import Starfish
 
+struct DummyError: Error {
+
+}
+
 extension XCTestCase {
 
 	func wait(_ delay: TimeInterval = 0.001) {

@@ -67,6 +67,22 @@ class TestFluxCombine: XCTestCase {
 
 		XCTAssertEqual(Flux<(Int, Int)>.events([(0, 1), (2, 1), (2, 3), (2, 5)]), receivedEvents, { $0.0 == $1.0 && $0.1 == $1.1 })
 	}
+	
+	func testCombineLatestOnFirstFluxError() {
+		let flux1 = Flux<Int>([0])
+		let flux2 = Flux<Int>([1])
+		let sentEvents = [Event<(Int, Int)>.value((0, 1)), Event<(Int, Int)>.error(DummyError())]
+		var receivedEvents = [Event<(Int, Int)>]()
+		
+		_ = flux1.combineLatest(with: flux2).subscribe { event in receivedEvents += [event] }
+		wait()
+
+		flux1.append(Event<Int>.error(DummyError()))
+		flux1.appendValue(4)
+		flux2.appendValue(5)
+
+		XCTAssertEqual(sentEvents, receivedEvents, { $0.0 == $1.0 && $0.1 == $1.1 })
+	}
 
 	func testSwitchLatest() {
 		let flux1 = Flux<Int>([0, 2])
