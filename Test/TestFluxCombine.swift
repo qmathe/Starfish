@@ -131,6 +131,21 @@ class TestFluxCombine: XCTestCase {
 
 		XCTAssertEqual(sentEvents, receivedEvents, { $0.0 == $1.0 && $0.1 == $1.1 })
 	}
+	
+	func testZip() {
+		let flux1 = Flux<Int>([0, 2])
+		let flux2 = Flux<Int>([1, 3])
+		var receivedEvents = [Event<(Int, Int)>]()
+		
+		_ = flux1.zip(with: flux2).subscribe { event in receivedEvents += [event] }
+		wait()
+
+		flux2.appendValue(5)
+		flux2.appendValue(7)
+		flux1.appendValue(8)
+
+		XCTAssertEqual(Flux<(Int, Int)>.events([(0, 1), (2, 3), (8, 5)]), receivedEvents, { $0.0 == $1.0 && $0.1 == $1.1 })
+	}
 
 	func testSwitchLatest() {
 		let flux1 = Flux<Int>([0, 2])

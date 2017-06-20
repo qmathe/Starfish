@@ -18,6 +18,8 @@
 		60873B481DD88175004FFE29 /* Starfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60873B3F1DD88175004FFE29 /* Starfish.framework */; };
 		60873B671DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60873B681DD88353004FFE29 /* Starfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 60873B661DD88353004FFE29 /* Starfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60A7635A1EF9D98100EDAD35 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A763591EF9D98100EDAD35 /* Buffer.swift */; };
+		60A7635B1EF9D98100EDAD35 /* Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A763591EF9D98100EDAD35 /* Buffer.swift */; };
 		60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */; };
 		60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8EE701EE0D0860060B5F2 /* Subscription.swift */; };
 		60FF90F21EE8B83E002CACB0 /* TestFluxCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF90F11EE8B83E002CACB0 /* TestFluxCreation.swift */; };
@@ -57,6 +59,7 @@
 		60873B611DD882F0004FFE29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/iOS/Info.plist; sourceTree = "<group>"; };
 		60873B641DD8834A004FFE29 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/iOS/Info.plist; sourceTree = "<group>"; };
 		60873B661DD88353004FFE29 /* Starfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfish.h; path = Support/Starfish.h; sourceTree = "<group>"; };
+		60A763591EF9D98100EDAD35 /* Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buffer.swift; sourceTree = "<group>"; };
 		60B8EE631ED717B90060B5F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		60B8EE6E1EE0D07E0060B5F2 /* Flux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flux.swift; sourceTree = "<group>"; };
 		60B8EE701EE0D0860060B5F2 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
@@ -183,6 +186,7 @@
 				603537EB1EE221A500BDE53B /* FluxOperators.swift */,
 				60B8EE701EE0D0860060B5F2 /* Subscription.swift */,
 				A532412E1EE844170047C849 /* Wave.swift */,
+				60A763591EF9D98100EDAD35 /* Buffer.swift */,
 			);
 			path = Flux;
 			sourceTree = "<group>";
@@ -381,6 +385,7 @@
 				60B8EE6F1EE0D07E0060B5F2 /* Flux.swift in Sources */,
 				60B8EE711EE0D0860060B5F2 /* Subscription.swift in Sources */,
 				603537EC1EE221A500BDE53B /* FluxOperators.swift in Sources */,
+				60A7635A1EF9D98100EDAD35 /* Buffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60A7635B1EF9D98100EDAD35 /* Buffer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

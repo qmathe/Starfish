@@ -71,15 +71,17 @@ extension Flux {
 	}
 
 	open func combineLatest<V, W>(with otherFlux: Flux<V>, reduce: @escaping (T, V) -> W) -> Flux<W> {
+		let buffer = FlatBuffer2<T, V>()
         let stream = Flux<W>()
+		stream.buffer = buffer
 
 		_ = subscribe(sendNow: false) { event in
             switch event {
             case .value(let value):
-				if let otherValue = self.buffer.1 as? V {
+				if let otherValue = buffer.value2 {
 					stream.append(Flux<W>.Event<W>.value(reduce(value, otherValue)))
 				}
-				self.buffer.0 = value
+				buffer.value1 = value
             case .error(let error):
                 stream.append(Flux<W>.Event<W>.error(error))
             case .completed:
@@ -89,10 +91,10 @@ extension Flux {
 		_ = otherFlux.subscribe(sendNow: false) { event in
 			switch event {
             case .value(let value):
-				if let otherValue = self.buffer.0 as? T {
+				if let otherValue = buffer.value1 {
 					stream.append(Flux<W>.Event<W>.value(reduce(otherValue, value)))
 				}
-				self.buffer.1 = value
+				buffer.value2 = value
             case .error(let error):
                 stream.append(Flux<W>.Event<W>.error(error))
             case .completed:
@@ -102,6 +104,54 @@ extension Flux {
 
 		// Emit each event one at a time and combine it with the last emitted value
 		for _ in 0..<Swift.max(events.count, otherFlux.events.count) {
+			send(1)
+			otherFlux.send(1)
+		}
+
+        return stream
+    }
+	
+	open func zip<V>(with otherFlux: Flux<V>) -> Flux<(T, V)> {
+		return zip(with: otherFlux) { value, otherValue in
+			return (value, otherValue)
+		}
+	}
+	
+	open func zip<V, W>(with otherFlux: Flux<V>, reduce: @escaping (T, V) -> W) -> Flux<W> {
+		let buffer = Buffer2<T, V>()
+        let stream = Flux<W>()
+
+		_ = subscribe(sendNow: false) { event in
+            switch event {
+            case .value(let value):
+				if buffer.values2.isEmpty {
+					buffer.values1.append(value)
+				} else {
+					stream.append(Flux<W>.Event<W>.value(reduce(value, buffer.values2.removeFirst())))
+				}
+            case .error(let error):
+                stream.append(Flux<W>.Event<W>.error(error))
+            case .completed:
+                stream.append(Flux<W>.Event<W>.completed)
+            }
+        }
+		_ = otherFlux.subscribe(sendNow: false) { event in
+			switch event {
+            case .value(let value):
+				if buffer.values1.isEmpty {
+					buffer.values2.append(value)
+				} else {
+					stream.append(Flux<W>.Event<W>.value(reduce(buffer.values1.removeFirst(), value)))
+				}
+            case .error(let error):
+                stream.append(Flux<W>.Event<W>.error(error))
+            case .completed:
+                stream.append(Flux<W>.Event<W>.completed)
+            }
+		}
+
+		// Emit each event one at a time and zip it with the last emitted value
+		for _ in 0..<Swift.min(events.count, otherFlux.events.count) {
 			send(1)
 			otherFlux.send(1)
 		}

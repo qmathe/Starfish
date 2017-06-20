@@ -24,7 +24,7 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	}
 
 	open internal(set) var events = [Event<T>]()
-	var buffer = (Any?, Any?)(nil, nil)
+	var buffer: Buffer = EmptyBuffer()
 	public internal(set) var state = State.active
 	open private(set) var subscriptions = Set<Subscription<T>>()
 	open private(set) var paused = false
@@ -58,7 +58,6 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 	}
 	
 	// MARK: - Initialization
-	
 	
 	/// Initializes a new empty stream.
 	///
