@@ -94,9 +94,9 @@ open class Flux<T>: MutableCollection, RangeReplaceableCollection {
 		self.queue = queue
 	}
 
-	public required init(interval: TimeInterval, repeats: Bool, queue: DispatchQueue) {
+	/*public required init(interval: TimeInterval, repeats: Bool, queue: DispatchQueue) {
 		self.queue = queue
-	}
+	}*/
 	
 	// MARK: - Subcribing to Events
 	
